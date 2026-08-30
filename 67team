@@ -1,0 +1,266 @@
+-- NICE X STEAL AN EGG | KEY SYSTEM & GUI
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+if PlayerGui:FindFirstChild("NiceXKeyUI") then
+    PlayerGui.NiceXKeyUI:Destroy()
+end
+if PlayerGui:FindFirstChild("NiceXHubUI") then
+    PlayerGui.NiceXHubUI:Destroy()
+end
+
+-- ==================== GIAO DIỆN NHẬP KEY ====================
+local KeyGui = Instance.new("ScreenGui")
+KeyGui.Name = "NiceXKeyUI"
+KeyGui.Parent = PlayerGui
+KeyGui.ResetOnSpawn = false
+
+local KeyFrame = Instance.new("Frame")
+KeyFrame.Parent = KeyGui
+KeyFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+KeyFrame.BorderSizePixel = 0
+KeyFrame.Position = UDim2.new(0.5, -125, 0.5, -85)
+KeyFrame.Size = UDim2.new(0, 250, 0, 170)
+KeyFrame.Active = true
+KeyFrame.Draggable = true
+Instance.new("UICorner", KeyFrame).CornerRadius = UDim.new(0, 10)
+
+local KeyTitle = Instance.new("TextLabel")
+KeyTitle.Parent = KeyFrame
+KeyTitle.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+KeyTitle.BorderSizePixel = 0
+KeyTitle.Size = UDim2.new(1, 0, 0, 36)
+KeyTitle.Font = Enum.Font.GothamBold
+KeyTitle.Text = "  🔥 Nice X - Key System"
+KeyTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyTitle.TextSize = 13
+KeyTitle.TextXAlignment = Enum.TextXAlignment.Left
+Instance.new("UICorner", KeyTitle).CornerRadius = UDim.new(0, 10)
+
+local KeyBox = Instance.new("TextBox")
+KeyBox.Parent = KeyFrame
+KeyBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+KeyBox.BorderSizePixel = 0
+KeyBox.Position = UDim2.new(0.08, 0, 0.32, 0)
+KeyBox.Size = UDim2.new(0.84, 0, 0, 38)
+KeyBox.Font = Enum.Font.Gotham
+KeyBox.PlaceholderText = "Nhập Key vào đây..."
+KeyBox.Text = ""
+KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyBox.PlaceholderColor3 = Color3.fromRGB(150, 150, 150)
+KeyBox.TextSize = 13
+Instance.new("UICorner", KeyBox).CornerRadius = UDim.new(0, 6)
+
+local SubmitBtn = Instance.new("TextButton")
+SubmitBtn.Parent = KeyFrame
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(40, 167, 69)
+SubmitBtn.BorderSizePixel = 0
+SubmitBtn.Position = UDim2.new(0.08, 0, 0.62, 0)
+SubmitBtn.Size = UDim2.new(0.84, 0, 0, 38)
+SubmitBtn.Font = Enum.Font.GothamBold
+SubmitBtn.Text = "🔓 Xác Nhận Key"
+SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitBtn.TextSize = 13
+Instance.new("UICorner", SubmitBtn).CornerRadius = UDim.new(0, 6)
+
+local StatusLabel = Instance.new("TextLabel")
+StatusLabel.Parent = KeyFrame
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Position = UDim2.new(0.08, 0, 0.85, 0)
+StatusLabel.Size = UDim2.new(0.84, 0, 0, 18)
+StatusLabel.Font = Enum.Font.Gotham
+StatusLabel.Text = "Key: UPDATEMENU1SOON"
+StatusLabel.TextColor3 = Color3.fromRGB(140, 140, 140)
+StatusLabel.TextSize = 10
+StatusLabel.TextXAlignment = Enum.TextXAlignment.Center
+
+-- ==================== HÀM MỞ MENU CHÍNH ====================
+local function OpenMainHub()
+    KeyGui:Destroy()
+
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "NiceXHubUI"
+    ScreenGui.Parent = PlayerGui
+    ScreenGui.ResetOnSpawn = false
+
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Parent = ScreenGui
+    MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.Position = UDim2.new(0.05, 0, 0.15, 0)
+    MainFrame.Size = UDim2.new(0, 240, 0, 195)
+    MainFrame.Active = true
+    MainFrame.Draggable = true
+    Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
+
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.Parent = MainFrame
+    TitleLabel.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    TitleLabel.BorderSizePixel = 0
+    TitleLabel.Size = UDim2.new(1, 0, 0, 36)
+    TitleLabel.Font = Enum.Font.GothamBold
+    TitleLabel.Text = "  ⚡ Nice X Steal An Egg"
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TitleLabel.TextSize = 13
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    Instance.new("UICorner", TitleLabel).CornerRadius = UDim.new(0, 8)
+
+    local MarkerBtn = Instance.new("TextButton")
+    MarkerBtn.Parent = MainFrame
+    MarkerBtn.BackgroundColor3 = Color3.fromRGB(0, 115, 230)
+    MarkerBtn.BorderSizePixel = 0
+    MarkerBtn.Position = UDim2.new(0.05, 0, 0.23, 0)
+    MarkerBtn.Size = UDim2.new(0.9, 0, 0, 38)
+    MarkerBtn.Font = Enum.Font.GothamBold
+    MarkerBtn.Text = "🗑️ Remove Marker"
+    MarkerBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    MarkerBtn.TextSize = 13
+    Instance.new("UICorner", MarkerBtn).CornerRadius = UDim.new(0, 6)
+
+    local GoBtn = Instance.new("TextButton")
+    GoBtn.Parent = MainFrame
+    GoBtn.BackgroundColor3 = Color3.fromRGB(40, 167, 69)
+    GoBtn.BorderSizePixel = 0
+    GoBtn.Position = UDim2.new(0.05, 0, 0.45, 0)
+    GoBtn.Size = UDim2.new(0.9, 0, 0, 38)
+    GoBtn.Font = Enum.Font.GothamBold
+    GoBtn.Text = "🏃 Go To Marker"
+    GoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    GoBtn.TextSize = 13
+    Instance.new("UICorner", GoBtn).CornerRadius = UDim.new(0, 6)
+
+    local ToggleBtn = Instance.new("TextButton")
+    ToggleBtn.Parent = MainFrame
+    ToggleBtn.BackgroundColor3 = Color3.fromRGB(220, 53, 69)
+    ToggleBtn.BorderSizePixel = 0
+    ToggleBtn.Position = UDim2.new(0.05, 0, 0.67, 0)
+    ToggleBtn.Size = UDim2.new(0.9, 0, 0, 38)
+    ToggleBtn.Font = Enum.Font.GothamBold
+    ToggleBtn.Text = "⚡ Bypass Speed: ON 🟢"
+    ToggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleBtn.TextSize = 13
+    Instance.new("UICorner", ToggleBtn).CornerRadius = UDim.new(0, 6)
+
+    local CreditLabel = Instance.new("TextLabel")
+    CreditLabel.Parent = MainFrame
+    CreditLabel.BackgroundTransparency = 1
+    CreditLabel.Position = UDim2.new(0.05, 0, 0.88, 0)
+    CreditLabel.Size = UDim2.new(0.9, 0, 0, 18)
+    CreditLabel.Font = Enum.Font.Gotham
+    CreditLabel.Text = "Nice X Pro Anti Ban"
+    CreditLabel.TextColor3 = Color3.fromRGB(140, 140, 140)
+    CreditLabel.TextSize = 10
+
+    -- Logic Hub
+    local savedPos = nil
+    local speedBypass = true
+    local isBypassing = false
+
+    MarkerBtn.MouseButton1Click:Connect(function()
+        local char = LocalPlayer.Character
+        local root = char and char:FindFirstChild("HumanoidRootPart")
+        if root then
+            if not savedPos then
+                savedPos = root.CFrame
+                MarkerBtn.Text = "🗑️ Remove Marker"
+            else
+                savedPos = nil
+                MarkerBtn.Text = "📍 Set Marker"
+            end
+        end
+    end)
+
+    ToggleBtn.MouseButton1Click:Connect(function()
+        speedBypass = not speedBypass
+        if speedBypass then
+            ToggleBtn.Text = "⚡ Bypass Speed: ON 🟢"
+        else
+            ToggleBtn.Text = "⚡ Bypass Speed: OFF 🔴"
+        end
+    end)
+
+    GoBtn.MouseButton1Click:Connect(function()
+        if isBypassing then return end
+        local char = LocalPlayer.Character
+        local root = char and char:FindFirstChild("HumanoidRootPart")
+        local humanoid = char and char:FindFirstChild("Humanoid")
+        
+        if root and savedPos and humanoid then
+            isBypassing = true
+            task.spawn(function()
+                local startPos = root.Position
+                local targetPos = Vector3.new(savedPos.Position.X, startPos.Y, savedPos.Position.Z)
+                local dist = (startPos - targetPos).Magnitude
+                local speed = speedBypass and 350 or 200
+                local duration = math.clamp(dist / speed, 0.5, 10)
+                local elapsed = 0
+                
+                local antiDeathConn = RunService.Stepped:Connect(function()
+                    if humanoid and humanoid.Parent then
+                        humanoid.Health = humanoid.MaxHealth
+                        humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+                    end
+                end)
+                
+                local runConn
+                runConn = RunService.Heartbeat:Connect(function(dt)
+                    if not root or not root.Parent then
+                        if runConn then runConn:Disconnect() end
+                        if antiDeathConn then antiDeathConn:Disconnect() end
+                        isBypassing = false
+                        GoBtn.Text = "🏃 Go To Marker"
+                        return
+                    end
+                    
+                    elapsed = elapsed + dt
+                    local timeLeft = math.ceil(duration - elapsed)
+                    if timeLeft > 0 then
+                        GoBtn.Text = "🏃 Running... " .. timeLeft .. "s"
+                    else
+                        GoBtn.Text = "🏃 Running..."
+                    end
+                    
+                    local alpha = math.clamp(elapsed / duration, 0, 1)
+                    local currentPos = startPos:Lerp(targetPos, alpha)
+                    root.CFrame = CFrame.new(currentPos, targetPos)
+                    root.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                    
+                    if alpha >= 1 then
+                        if runConn then runConn:Disconnect() end
+                        if antiDeathConn then antiDeathConn:Disconnect() end
+                        
+                        root.CFrame = savedPos
+                        if humanoid then
+                            humanoid.Health = humanoid.MaxHealth
+                            humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+                        end
+                        
+                        GoBtn.Text = "✅ Success!"
+                        task.wait(1)
+                        GoBtn.Text = "🏃 Go To Marker"
+                        isBypassing = false
+                    end
+                end)
+            end)
+        else
+            GoBtn.Text = "❌ Chưa có Marker!"
+            task.wait(1)
+            GoBtn.Text = "🏃 Go To Marker"
+        end
+    end)
+end
+
+-- Kiểm tra Key khi bấm nút Xác Nhận
+SubmitBtn.MouseButton1Click:Connect(function()
+    if KeyBox.Text == "UPDATEMENU1SOON" then
+        StatusLabel.TextColor3 = Color3.fromRGB(40, 167, 69)
+        StatusLabel.Text = "Key chính xác! Đang mở Hub..."
+        task.wait(0.5)
+        OpenMainHub()
+    else
+        StatusLabel.TextColor3 = Color3.fromRGB(220, 53, 69)
+        StatusLabel.Text = "Sai Key rồi boss man ơi!"
+    end
+end)
