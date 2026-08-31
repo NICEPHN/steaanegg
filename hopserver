@@ -1,0 +1,309 @@
+-- Tạo ScreenGui chính
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "NiceXHopGuiVIP"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+if syn and syn.protect_gui then
+    syn.protect_gui(ScreenGui)
+    ScreenGui.Parent = game:GetService("CoreGui")
+elseif gethui then
+    ScreenGui.Parent = gethui()
+else
+    ScreenGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+end
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = UDim2.new(0, 340, 0, 290)
+MainFrame.Position = UDim2.new(0.5, -170, 0.5, -145)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Parent = ScreenGui
+
+local UICornerMain = Instance.new("UICorner")
+UICornerMain.CornerRadius = UDim.new(0, 8)
+UICornerMain.Parent = MainFrame
+
+local TitleBar = Instance.new("Frame")
+TitleBar.Size = UDim2.new(1, 0, 0, 35)
+TitleBar.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
+TitleBar.BorderSizePixel = 0
+TitleBar.Parent = MainFrame
+
+local UICornerTitle = Instance.new("UICorner")
+UICornerTitle.CornerRadius = UDim.new(0, 8)
+UICornerTitle.Parent = TitleBar
+
+local TitleText = Instance.new("TextLabel")
+TitleText.Size = UDim2.new(1, -20, 1, 0)
+TitleText.Position = UDim2.new(0, 12, 0, 0)
+TitleText.BackgroundTransparency = 1
+TitleText.TextColor3 = Color3.fromRGB(240, 240, 240)
+TitleText.TextSize = 13
+TitleText.Font = Enum.Font.GothamBold
+TitleText.TextXAlignment = Enum.TextXAlignment.Left
+TitleText.Text = "NICE X HOP - UPDATE1PROVIP"
+TitleText.Parent = TitleBar
+
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Position = UDim2.new(1, -30, 0.5, -12)
+CloseButton.BackgroundColor3 = Color3.fromRGB(230, 60, 60)
+CloseButton.Text = ""
+CloseButton.BorderSizePixel = 0
+CloseButton.Parent = TitleBar
+
+local UICornerClose = Instance.new("UICorner")
+UICornerClose.CornerRadius = UDim.new(0, 6)
+UICornerClose.Parent = CloseButton
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+local PlayerCountLabel = Instance.new("TextLabel")
+PlayerCountLabel.Size = UDim2.new(1, -24, 0, 22)
+PlayerCountLabel.Position = UDim2.new(0, 12, 0, 42)
+PlayerCountLabel.BackgroundTransparency = 1
+PlayerCountLabel.TextColor3 = Color3.fromRGB(80, 220, 100)
+PlayerCountLabel.TextSize = 12
+PlayerCountLabel.Font = Enum.Font.GothamMedium
+PlayerCountLabel.TextXAlignment = Enum.TextXAlignment.Left
+PlayerCountLabel.Text = "Số lượng hiện tại trong server: " .. #game:GetService("Players"):GetPlayers()
+PlayerCountLabel.Parent = MainFrame
+
+local SubText = Instance.new("TextLabel")
+SubText.Size = UDim2.new(1, -24, 0, 20)
+SubText.Position = UDim2.new(0, 12, 0, 66)
+SubText.BackgroundTransparency = 1
+SubText.TextColor3 = Color3.fromRGB(255, 170, 50)
+SubText.TextSize = 11
+SubText.Font = Enum.Font.GothamBold
+SubText.TextXAlignment = Enum.TextXAlignment.Left
+SubText.Text = "tips : chọn số 1 để vào server 1 người chơi"
+SubText.Parent = MainFrame
+
+local KeyBox = Instance.new("TextBox")
+KeyBox.Size = UDim2.new(1, -24, 0, 28)
+KeyBox.Position = UDim2.new(0, 12, 0, 92)
+KeyBox.BackgroundColor3 = Color3.fromRGB(35, 35, 48)
+KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyBox.TextSize = 12
+KeyBox.Font = Enum.Font.Gotham
+KeyBox.PlaceholderText = "Nhập Key của bạn vào đây..."
+KeyBox.Text = ""
+KeyBox.ClearTextOnFocus = false
+KeyBox.BorderSizePixel = 0
+KeyBox.Parent = MainFrame
+
+local UICornerKeyBox = Instance.new("UICorner")
+UICornerKeyBox.CornerRadius = UDim.new(0, 6)
+UICornerKeyBox.Parent = KeyBox
+
+local GetKeyBtn = Instance.new("TextButton")
+GetKeyBtn.Size = UDim2.new(0.48, 0, 0, 28)
+GetKeyBtn.Position = UDim2.new(0, 12, 0, 126)
+GetKeyBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 120)
+GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetKeyBtn.TextSize = 12
+GetKeyBtn.Font = Enum.Font.GothamBold
+GetKeyBtn.Text = "Get Key"
+GetKeyBtn.BorderSizePixel = 0
+GetKeyBtn.Parent = MainFrame
+
+local UICornerGet = Instance.new("UICorner")
+UICornerGet.CornerRadius = UDim.new(0, 6)
+UICornerGet.Parent = GetKeyBtn
+
+local ConfirmKeyBtn = Instance.new("TextButton")
+ConfirmKeyBtn.Size = UDim2.new(0.48, 0, 0, 28)
+ConfirmKeyBtn.Position = UDim2.new(0.51, 0, 0, 126)
+ConfirmKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 150, 80)
+ConfirmKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ConfirmKeyBtn.TextSize = 12
+ConfirmKeyBtn.Font = Enum.Font.GothamBold
+ConfirmKeyBtn.Text = "Xác nhận Key"
+ConfirmKeyBtn.BorderSizePixel = 0
+ConfirmKeyBtn.Parent = MainFrame
+
+local UICornerConf = Instance.new("UICorner")
+UICornerConf.CornerRadius = UDim.new(0, 6)
+UICornerConf.Parent = ConfirmKeyBtn
+
+local InputDesc = Instance.new("TextLabel")
+InputDesc.Size = UDim2.new(1, -24, 0, 18)
+InputDesc.Position = UDim2.new(0, 12, 0, 164)
+InputDesc.BackgroundTransparency = 1
+InputDesc.TextColor3 = Color3.fromRGB(200, 200, 200)
+InputDesc.TextSize = 11
+InputDesc.Font = Enum.Font.Gotham
+InputDesc.TextXAlignment = Enum.TextXAlignment.Left
+InputDesc.Text = "Tối đa số lượng player trong server:"
+InputDesc.Parent = MainFrame
+
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(1, -24, 0, 28)
+TextBox.Position = UDim2.new(0, 12, 0, 184)
+TextBox.BackgroundColor3 = Color3.fromRGB(35, 35, 48)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextSize = 13
+TextBox.Font = Enum.Font.GothamBold
+TextBox.Text = "1"
+TextBox.ClearTextOnFocus = false
+TextBox.BorderSizePixel = 0
+TextBox.Parent = MainFrame
+
+local UICornerBox = Instance.new("UICorner")
+UICornerBox.CornerRadius = UDim.new(0, 6)
+UICornerBox.Parent = TextBox
+
+local HopSekaliBtn = Instance.new("TextButton")
+HopSekaliBtn.Size = UDim2.new(0.48, 0, 0, 32)
+HopSekaliBtn.Position = UDim2.new(0, 12, 0, 226)
+HopSekaliBtn.BackgroundColor3 = Color3.fromRGB(75, 75, 175)
+HopSekaliBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+HopSekaliBtn.TextSize = 12
+HopSekaliBtn.Font = Enum.Font.GothamBold
+HopSekaliBtn.Text = "Hop Sekali"
+HopSekaliBtn.BorderSizePixel = 0
+HopSekaliBtn.Parent = MainFrame
+
+local UICornerHop = Instance.new("UICorner")
+UICornerHop.CornerRadius = UDim.new(0, 6)
+UICornerHop.Parent = HopSekaliBtn
+
+local AutoHopBtn = Instance.new("TextButton")
+AutoHopBtn.Size = UDim2.new(0.48, 0, 0, 32)
+AutoHopBtn.Position = UDim2.new(0.51, 0, 0, 226)
+AutoHopBtn.BackgroundColor3 = Color3.fromRGB(40, 110, 70)
+AutoHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoHopBtn.TextSize = 12
+AutoHopBtn.Font = Enum.Font.GothamBold
+AutoHopBtn.Text = "Auto Hop: OFF"
+AutoHopBtn.BorderSizePixel = 0
+AutoHopBtn.Parent = MainFrame
+
+local UICornerAuto = Instance.new("UICorner")
+UICornerAuto.CornerRadius = UDim.new(0, 6)
+UICornerAuto.Parent = AutoHopBtn
+
+-- ==================== HỆ THỐNG XỬ LÝ ====================
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local isKeyValid = false
+
+GetKeyBtn.MouseButton1Click:Connect(function()
+    local linkKey = "https://example.com/get-key"
+    if setclipboard then
+        setclipboard(linkKey)
+        GetKeyBtn.Text = "Đã Copy Link Key!"
+    else
+        GetKeyBtn.Text = "Link đã tạo"
+    end
+    task.wait(2)
+    GetKeyBtn.Text = "Get Key"
+end)
+
+-- Cài đặt Key chính xác là UPDATE1PROVIP ở đây
+ConfirmKeyBtn.MouseButton1Click:Connect(function()
+    if KeyBox.Text == "UPDATE1PROVIP" then
+        isKeyValid = true
+        ConfirmKeyBtn.Text = "Thành Công!"
+        ConfirmKeyBtn.BackgroundColor3 = Color3.fromRGB(40, 200, 100)
+    else
+        isKeyValid = false
+        ConfirmKeyBtn.Text = "Sai Key!"
+        ConfirmKeyBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+        task.wait(2)
+        ConfirmKeyBtn.Text = "Xác nhận Key"
+        ConfirmKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 150, 80)
+    end
+end)
+
+task.spawn(function()
+    while ScreenGui.Parent do
+        task.wait(1)
+        pcall(function()
+            PlayerCountLabel.Text = "Số lượng hiện tại trong server: " .. #Players:GetPlayers()
+        end)
+    end
+end)
+
+local function SafeHop()
+    if not isKeyValid then
+        ConfirmKeyBtn.Text = "Hãy Nhập Key!"
+        task.wait(1.5)
+        ConfirmKeyBtn.Text = "Xác nhận Key"
+        return
+    end
+
+    pcall(function()
+        local maxLimit = tonumber(TextBox.Text) or 1
+        local url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+        local success, result = pcall(function()
+            return game:HttpGet(url)
+        end)
+        
+        if success then
+            local data = HttpService:JSONDecode(result)
+            if data and data.data then
+                local validServers = {}
+                for _, s in ipairs(data.data) do
+                    if s.playing <= maxLimit and s.playing > 0 and s.id ~= game.JobId then
+                        table.insert(validServers, s.id)
+                    end
+                end
+                
+                if #validServers > 0 then
+                    local randomTarget = validServers[math.random(1, #validServers)]
+                    TeleportService:TeleportToPlaceInstance(game.PlaceId, randomTarget, Players.LocalPlayer)
+                    return
+                end
+            end
+        end
+        
+        TeleportService:Teleport(game.PlaceId, Players.LocalPlayer)
+    end)
+end
+
+HopSekaliBtn.MouseButton1Click:Connect(function()
+    SafeHop()
+end)
+
+local autoHopActive = false
+AutoHopBtn.MouseButton1Click:Connect(function()
+    if not isKeyValid then
+        ConfirmKeyBtn.Text = "Hãy Nhập Key!"
+        task.wait(1.5)
+        ConfirmKeyBtn.Text = "Xác nhận Key"
+        return
+    end
+
+    autoHopActive = not autoHopActive
+    if autoHopActive then
+        AutoHopBtn.Text = "Auto Hop: ON"
+        AutoHopBtn.BackgroundColor3 = Color3.fromRGB(60, 170, 90)
+    else
+        AutoHopBtn.Text = "Auto Hop: OFF"
+        AutoHopBtn.BackgroundColor3 = Color3.fromRGB(40, 110, 70)
+    end
+end)
+
+task.spawn(function()
+    while ScreenGui.Parent do
+        task.wait(5)
+        if autoHopActive and isKeyValid then
+            pcall(function()
+                local maxLimit = tonumber(TextBox.Text) or 1
+                if #Players:GetPlayers() > maxLimit then
+                    SafeHop()
+                end
+            end)
+        end
+    end
+end)
